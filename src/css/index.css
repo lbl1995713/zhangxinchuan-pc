@@ -12,3 +12,17 @@ html,body,#app{
 	height: 100%;
 	text-align: center;
 }
+
+body{
+	font-size: 12px;
+}
+img{border: none;}
+li{list-style: none}
+input,select,textarea,button{outline: none;}
+textarea{resize: none;}
+a{text-decoration: none;}
+
+/* table,td,th,tr{
+	text-align: center !important;
+} */
+

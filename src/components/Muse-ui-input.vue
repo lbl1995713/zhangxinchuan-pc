@@ -1,5 +1,9 @@
 <template>
-	<div class="container">
+	<div 
+	class="container"
+	:style="{
+		'width': half?'50%':'100%'
+	}">
 		<!-- 普通输入框 -->
 		<mu-text-field
 		v-if="type === 'text' || type === 'string'" 
@@ -7,8 +11,10 @@
 		:hintText="placeholder"
 		:errorText="errorText" 
 		type="text"
-		fullWidth 
-		labelFloat
+		:value="value"
+		:disabled="disabled"
+		:fullWidth="fullWidth" 
+		:labelFloat="labelFloat"
 		@input="updateValue($event)"
 		@blur="validator"
 		@focus="errorText?errorText='':null"/>
@@ -20,6 +26,8 @@
 		:hintText="placeholder"
 		:errorText="errorText"  
 		type="password"
+		:value="value"
+		:disabled="disabled"
 		:fullWidth="fullWidth" 
 		:labelFloat="labelFloat"
 		@input="updateValue($event)"
@@ -33,6 +41,8 @@
 		:hintText="placeholder"
 		:errorText="errorText" 
 		type="number"
+		:value="value"
+		:disabled="disabled"
 		:fullWidth="fullWidth" 
 		:labelFloat="labelFloat"
 		@input="updateValue($event)"
@@ -42,6 +52,8 @@
 		<!-- 选择下拉框 -->
 		<mu-select-field
 		v-if="type === 'select'"
+		:value="value"
+		:disabled="disabled"
 		:labelFocusClass="['label-foucs']"
 		:label="name"
 		:errorText="errorText"
@@ -58,6 +70,8 @@
 		<mu-select-field 
 		v-if="type === 'multipleSelect'"
 		:label="name"
+		:value="value"
+		:disabled="disabled"
 		:errorText="errorText"
 		multiple
 		v-model="multipleSelect">
@@ -71,6 +85,8 @@
 		<!-- 日期输入框 -->
 		<mu-date-picker
 		v-if="type === 'date'" 
+		:value="value"
+		:disabled="disabled"
 		mode="landscape"
 		:hintText="placeholder"
 		:errorText="errorText"
@@ -98,7 +114,27 @@
 	        	color="white"/>
 		    </label>
 		</div>
-	    
+
+		<!-- 单选框 -->
+		<mu-radio
+		v-if="type == 'radio'"
+		:value="value"
+		:disabled="disabled"
+		style="margin-right: 30px"
+		v-for="radio in config.options"
+		:key="radio.key" 
+		:label="radio.label" 
+		:name="'group'" 
+		:nativeValue="radio.key" 
+		@input="updateValue($event)" 
+		class="demo-radio"/>
+
+		 <mu-auto-complete
+		 v-if="type == 'asyncAutoCompelete'" 
+		 :label="name"
+		 :dataSource="dataSource" 
+		 :labelFloat="labelFloat" 
+		 :fullWidth="fullWidth"/>
 
 	</div>
 </template>
@@ -110,6 +146,16 @@
 				multipleSelect: [],
 				fileName: '',
 				errorText: '',
+				dataSource: [{//async异步自动补全输入框中下拉选择的值
+					value: 'key1',
+					text: 'label1'
+				},{
+					value: 'key2',
+					text: 'label2'
+				},{
+					value: 'key3',
+					text: 'label3'
+				}],
 			}
 		},
 		watch: {
@@ -138,6 +184,8 @@
 					return {}
 				}
 			},
+			//禁用输入框
+			disabled: Boolean,
 
 
 			fullWidth:{
@@ -147,6 +195,10 @@
 			labelFloat:{
 				type: Boolean,
 				default: true
+			},
+			half: {
+				type: Boolean,
+				default: false
 			}
 		},
 		methods:{
@@ -190,7 +242,8 @@
 
 <style type="text/css" scoped>
 	.container{
-		width: 100%;
+		width: 50%;
+		padding: 0 20px;
 	}
 	#uploadFile{
 		display: none;

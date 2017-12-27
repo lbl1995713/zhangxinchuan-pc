@@ -25,7 +25,7 @@
 
 	.container{
 		width: 100%;
-		height: 100%;
+		/*height: 100%;*/
 		min-height: 100%;
 		background-color: #f1f1f1;
 		display: flex;
@@ -37,6 +37,7 @@
 		width: 40%;
 		position: relative;
 		padding: 3%;
+		margin: 0 auto;
 	}
 	.loginFram:before{
 		content: "";

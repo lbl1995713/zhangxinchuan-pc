@@ -1,10 +1,15 @@
 import axios from 'axios'
 
 
-// axios.defaults.withCredentials = true
+// axios.defaults. = true
 const axiosConfig = axios.create({
-	baseURL: 'http://192.168.20.2:/',
+	baseURL: 'http://192.168.20.116:8080/zxc',
+	withCredentials: true,
 	timeout: 5000,
+	headers: {
+		'Content-Type': 'application/json;charset=UTF-8'
+	},
+
 	// withCredentials: false,//表示跨域请求时是否需要使用凭证
 	// `transformRequest` 允许在向服务器发送前，修改请求数据  后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
 	// `transformResponse` 在传递给 then/catch 前，允许修改响应数据

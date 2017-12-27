@@ -4,7 +4,7 @@ export default {
 	data() {
 		return {
 			definition:[{
-				id: 'userName',
+				id: 'phone',
 				name: '用户名',
 				type: 'string',
 				placeholder: '请输入用户名',
@@ -14,22 +14,37 @@ export default {
 				type: 'password',
 				placeholder: '请输入密码',
 			}],
-			model: new Map()
+			model: {},
 		}
 	},
 	methods:{
 		login() {
 			console.log(this.model)
-			if(!this.model.userName || !this.model.password){
+			Object.assign(this.model, {
+				phone: '18200000001',
+				password: 'admin'
+			})
+
+			if(!this.model.phone || !this.model.password){
 				this.$toast('请输入用户名以及密码')
 				return
 			}
-			// 请求后台api
+			// 请求后台api   login
 			
-			// 跳转
-			this.$router.push({
-				name: 'index'
+			commonServices.transport({
+				url: 'sys/login',
+				data: this.model,
+				Vue: this
 			})
+			.then(res=>{
+				console.log(res)
+				if(res.code === 0){
+					this.$router.push({
+						name: 'index'
+					})
+				}
+			})
+			
 		}
-	}
+	},
 }

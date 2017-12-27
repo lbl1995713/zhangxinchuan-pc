@@ -5,6 +5,8 @@
 		:key="def.id"
 		:type="def.type"
 		:name="def.name"
+		:half="def.half"
+		:disabled="def.disabled"
 		:placeholder="def.placeholder"
 		:config="def.config"
 		v-model="model[def.id]"
@@ -59,5 +61,7 @@
 <style type="text/css" scoped>
 	.muse-ui-form{
 		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
 	}
 </style>

@@ -13,7 +13,8 @@
       	  :anchorOrigin="{vertical: 'top',horizontal: 'right'}"
 	      :targetOrigin="{vertical: 'bottom',horizontal: 'right'}"
       	  style="color:#fff" 
-      	  slot="right">
+      	  slot="right"
+      	  tooltip="操作">
 		      <mu-menu-item title="设置" leftIcon="settings"/>
 			  <mu-menu-item title="帮助" leftIcon="help_outline"/>
 			  <mu-divider/>
@@ -27,12 +28,12 @@
     		<muse-ui-navPlatForm/>
     	</nav>
     	<div class="main">
-    		
+    		<router-view/>
     	</div>
     </div>
-    <footer>
+   <!--  <footer>
     	
-    </footer>
+    </footer> -->
 
   </div>
 </template>
@@ -47,7 +48,7 @@ export {default}  from './indexController'
 }
 
 header{
-  background-color: #7e57c2;
+  background-color: #474a4f;
   display: flex;
   justify-content: space-between;
 }
@@ -56,6 +57,7 @@ header{
   font-size: 24px;
   color: white;
   padding: 10px 20px;
+  margin: 0;
 }
 
 .user{
@@ -71,9 +73,16 @@ header{
   flex-direction: row;
 }
 .content nav{
-	/*width: 12%;*/
-	/*padding-right: 20px;	*/
 	height: 100%;
+	min-width: 14%;
+	background-color: #fff;
+	margin: 0;
+}
+
+.content .main{
+	width: 100%;
+	margin: 20px;
+	padding:  20px;
 	background-color: #fff;
 }
 
