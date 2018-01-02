@@ -89,7 +89,7 @@ export default {
 	},
 	methods: {
 		_fetchData(searchModel) {
-			commonServices.fetch({
+			commonServices.fetchAssignment({
 				url: 'user/list',
 				searchModel: searchModel,
 				model: 'userList',

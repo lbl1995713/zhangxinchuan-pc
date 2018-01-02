@@ -199,7 +199,7 @@
 			half: {
 				type: Boolean,
 				default: false
-			}
+			},
 		},
 		methods:{
 			updateValue(val) {

@@ -19,9 +19,8 @@ export default {
 	},
 	methods:{
 		login() {
-			console.log(this.model)
 			Object.assign(this.model, {
-				phone: '18200000001',
+				phone: '18200000002',
 				password: 'admin'
 			})
 
@@ -39,6 +38,8 @@ export default {
 			.then(res=>{
 				console.log(res)
 				if(res.code === 0){
+					this.$store.commit('setCookie', res.token)
+					console.log(this.$store.state.cookie)
 					this.$router.push({
 						name: 'index'
 					})

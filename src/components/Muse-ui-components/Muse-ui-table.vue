@@ -155,17 +155,17 @@
 				createForm: { //新增form
 					show: false,
 					model: {},
-					definition: []
+					definition: [],
 				},
 				editForm:{ //修改form
 					show: false,
 					model: {},
-					definition: []
+					definition: [],
 				},
 				detailForm: { //详情form
 					show: false,
 					model: {},
-					definition: []
+					definition: [],
 				},
 			}
 		},
@@ -276,7 +276,7 @@
 			/* table Buttons  */
 			detail(data) {
 				console.log(data)
-				this.$set(this.detailForm, 'model', Object.assign({}, data))
+				this.$set(this.detailForm, 'model', JSON.parse(JSON.stringify(data)))
 				console.log(this.detailForm.model)
 				this.detailForm.show = true
 			},
@@ -383,13 +383,6 @@
 				this.$set(this.detailForm, 'definition', defArr)
 			},
 
-
-			_commonCreate({url, data}) {
-
-			},
-
-
-			
 			
 		},
 

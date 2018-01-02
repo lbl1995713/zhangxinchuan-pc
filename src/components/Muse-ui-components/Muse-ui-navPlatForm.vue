@@ -31,7 +31,7 @@
 </template>
 
 <script type="text/javascript">
-	import navData from '../../static/nav.js'
+	import navData from '../../../static/nav.js'
 	export default {
 		data() {
 			return {
