@@ -18,7 +18,7 @@ export default {
 				params: searchModel
 			})
 			.then(res=>{
-				Vue.$done()
+				if(progress)  Vue.$done()
 				if(res.data.code === 0){
 					Vue.$set(Vue[model], 'model', res.data.data.list)
 					Vue.$set(Vue[model]['searchModel'], 'total', res.data.data.total)
@@ -27,12 +27,12 @@ export default {
 					reject(res)
 				}
 			}, errRes=>{
-				Vue.$done()
+				if(progress)  Vue.$done()
 				Vue.$toast('网络好像出问题了 = v =')
 				reject(errRes)
 			})
 			.catch(err=>{
-				Vue.$done()
+				if(progress)  Vue.$done()
 				Vue.$toast('网络好像出问题了 = v =')
 				reject(err)
 			})
@@ -46,14 +46,14 @@ export default {
 				params: searchModel
 			})
 			.then(res=>{
-				Vue.$done()
+				if(progress)  Vue.$done()
 				if(res.data.code === 0){
 					resolve(res)
 				}else{
 					reject(res)
 				}
 			}, err=>{
-				Vue.$done()
+				if(progress)  Vue.$done()
 				Vue.$toast('网络好像出问题了 = v =')
 				reject(err)
 			})

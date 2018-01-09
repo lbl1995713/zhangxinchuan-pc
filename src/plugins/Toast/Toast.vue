@@ -5,12 +5,12 @@
     class="toast"
     :class="position" 
     v-if="show">
-    <div class="dialog_shadow"></div>
-    <div class="toast_main">
-      <i v-text="message?message:'这是主要的toast内容'"></i>
+      <div class="dialog_shadow"></div>
+      <div class="toast_main">
+        <i v-text="message?message:'这是主要的toast内容'"></i>
+      </div>
     </div>
-  </div>
-</transition>
+  </transition>
   
 </template>
 
